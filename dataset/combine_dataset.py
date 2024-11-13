@@ -75,6 +75,10 @@ TESS
     a WAV format
 
 
+    I HAVE MOVED ALL THE CALM AUDIO FILES TO NEUTRAL
+
+    // We will not include bored and surprised in out training dataset, as there examples are less
+
 '''
 
 
@@ -192,10 +196,10 @@ def combineRAVEDESS(ravedesspath, combined_audio_path):
                 audio_path = combined_audio_path + "/happy/" + audios[i]
                 os.system(f"cp {file_path} {audio_path}")
             elif file_name[2] == '01':
-                audio_path = combined_audio_path + "/neutral/" + audios[i]
+                audio_path = combined_audio_path + "/neutral/" + audios[i] # adding calm files to neutral
                 os.system(f"cp {file_path} {audio_path}")
             elif file_name[2] == '02':
-                audio_path = combined_audio_path + "/calm/" + audios[i]
+                audio_path = combined_audio_path + "/neutral/" + audios[i]
                 os.system(f"cp {file_path} {audio_path}")
             elif file_name[2] == '08':
                 audio_path = combined_audio_path + "/surprise/" + audios[i]
@@ -318,7 +322,7 @@ if __name__ == "__main__":
     print("All SAVEE data is completed formatted and stored in there respective Folders")
 
     tess_path = "/Users/ishananand/Desktop/ser/dataset/tess_dataset/"
-    combineTESS(tess_path, combined_audio_path)
+    # combineTESS(tess_path, combined_audio_path)
     print("All TESS data is completed formatted and stored in there respective Folders")
 
     

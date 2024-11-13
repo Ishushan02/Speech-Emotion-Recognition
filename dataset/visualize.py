@@ -1,0 +1,49 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+import numpy as np
+import pandas as pd
+
+def plotCountPlot(dataset_path, save_dir, filename):
+    base_dir = dataset_path
+
+    # Get the list of subdirectories (e.g., 'sad', 'happy', etc.)
+    sub_dirs = [sub_dir for sub_dir in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, sub_dir))]
+
+    # Prepare a list of tuples (sub_dir, number_of_files_in_sub_dir)
+    sub_dir_counts = []
+
+    for sub_dir in sub_dirs:
+        sub_dir_path = os.path.join(base_dir, sub_dir)
+        file_count = len([f for f in os.listdir(sub_dir_path) if os.path.isfile(os.path.join(sub_dir_path, f))])
+        sub_dir_counts.append((sub_dir, file_count))
+
+    # Convert to a DataFrame for easier plotting with seaborn
+    df = pd.DataFrame(sub_dir_counts, columns=['Subdirectory', 'File Count'])
+
+    # Plotting the countplot
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(x='Subdirectory', y='File Count', data=df, hue='Subdirectory', palette='viridis', legend=False)
+
+    # Annotating the bars with their respective file counts
+    for p in ax.patches:
+        ax.annotate(f'{int(p.get_height())}', 
+        (p.get_x() + p.get_width() / 2., p.get_height()), 
+        ha='center', va='center', 
+        fontsize=12, color='black', 
+        xytext=(0, 5), textcoords='offset points')
+
+    # Customize the plot
+    plt.title('Count of Each Audio ', loc ='center', fontsize=16)
+    plt.xlabel('Emotions', fontsize=14)
+    plt.ylabel('Number of Audio Files', fontsize=14)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    
+    output_filename = filename
+    plt.savefig(save_dir + output_filename)
+    plt.show()
+
+
+if __name__=="__main__":
+    plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
