@@ -51,9 +51,33 @@ RAVDESS
 
 
 SAVEE
+
+    The SAVEE database was recorded from four native English male speakers (identified as DC, JE, JK, KL)
+    postgraduate students and researchers at the University of Surrey aged from 27 to 31 years. Emotion has
+    been described psychologically in discrete categories: anger(a), disgust(d), fear(f), happiness(h), sadness(sa) and surprise(su).
+    A neutral category is also added to provide recordings of 7 emotion categories.
+
+    The text material consisted of 15 TIMIT sentences per emotion: 3 common, 2 emotion-specific and 10 generic
+    sentences that were different for each emotion and phonetically-balanced. The 3 common and 2 * 6 = 12 
+    emotion-specific sentences were recorded as neutral to give 30 neutral sentences. This resulted in a total
+    of 120 utterances per speaker
+
+
 TESS
 
+    There are a set of 200 target words were spoken in the carrier phrase "Say the word _' by two actresses 
+    (aged 26 and 64 years) and recordings were made of the set portraying each of seven emotions 
+    (anger, disgust, fear, happiness, pleasant surprise, sadness, and neutral). There are 2800 data points 
+    (audio files) in total.
+
+    The dataset is organised such that each of the two female actor and their emotions are contain within its 
+    own folder. And within that, all 200 target words audio file can be found. The format of the audio file is 
+    a WAV format
+
+
 '''
+
+
 
 combined_audio_path = "/Users/ishananand/Desktop/ser/combined_dataset/"
 
@@ -222,6 +246,56 @@ def combineSAVEE(savee_path, combined_audio_path):
             os.system(f"cp {file_path} {audio_path}")
 
 
+def combineTESS(tess_path, combined_audio_path):
+
+    tess_dir = os.listdir(tess_path)
+    count = 0
+    for dir in tess_dir:
+        audio_path = os.listdir(tess_path + "/" + dir)
+        
+        
+        for file in audio_path:
+            count += 1
+            # print(file)
+            file_path = tess_path + dir + "/" + file
+
+            if "_angry" in dir:
+                audio_path = combined_audio_path + "/angry/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Angry")
+            elif "_disgust" in dir:
+                audio_path = combined_audio_path + "/disgust/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Angry")
+            elif ("Fear" in dir) or ("fear" in dir):
+                audio_path = combined_audio_path + "/fear/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Fear")
+            elif "_happy" in dir:
+                audio_path = combined_audio_path + "/happy/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Happy")
+            elif "_neutral" in dir:
+                audio_path = combined_audio_path + "/neutral/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Neutral")
+            elif "_surprise" in dir:
+                audio_path = combined_audio_path + "/surprise/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Surprise")
+            elif "Sad" in dir or "sad" in dir:
+                audio_path = combined_audio_path + "/sad/" + file
+                os.system(f"cp {file_path} {audio_path}")
+                # print("Sad")
+            else:
+                audio_path = combined_audio_path + "/unknown/" + file
+                os.system(f"cp {file_path} {audio_path}")
+            
+
+    print("Total Length of TESS Audio's: ", count)
+
+
+
 
 
 if __name__ == "__main__":
@@ -240,8 +314,14 @@ if __name__ == "__main__":
 
 
     savee_path = "/Users/ishananand/Desktop/ser/dataset/savee_dataset/"
-    combineSAVEE(savee_path, combined_audio_path)
+    # combineSAVEE(savee_path, combined_audio_path)
     print("All SAVEE data is completed formatted and stored in there respective Folders")
+
+    tess_path = "/Users/ishananand/Desktop/ser/dataset/tess_dataset/"
+    combineTESS(tess_path, combined_audio_path)
+    print("All TESS data is completed formatted and stored in there respective Folders")
+
+    
 
 
 
