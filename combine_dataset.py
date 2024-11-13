@@ -183,6 +183,45 @@ def combineRAVEDESS(ravedesspath, combined_audio_path):
     print("Total Length of RAVEDESS Audio's: ", totalaudios)
 
 
+def combineSAVEE(savee_path, combined_audio_path):
+    savee_dir = os.listdir(savee_path)
+    print("Total Length of SAVEE Audio's: ", len(savee_dir))
+
+    for i in range(len(savee_dir)):
+        file_path = savee_path + savee_dir[i]
+        # print(file_path)
+        # print(cremad_dir[i].split("_"))
+        # The third value of list contains the emotion of the .wav file
+
+        file_name = savee_dir[i].split("_")[1]
+        word = file_name[:-6]
+
+        if word == 'sa':
+            audio_path = combined_audio_path + "/sad/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+        elif word == 'a':
+            audio_path = combined_audio_path + "/angry/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+        elif word == 'd':
+            audio_path = combined_audio_path + "/disgust/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+        elif word == 'f':
+            audio_path = combined_audio_path + "/fear/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+        elif word == 'h':
+            audio_path = combined_audio_path + "/happy/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+        elif word == 'n':
+            audio_path = combined_audio_path + "/neutral/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+        elif word == 'su':
+                audio_path = combined_audio_path + "/surprise/" + savee_dir[i]
+                os.system(f"cp {file_path} {audio_path}")
+        else:
+            audio_path = combined_audio_path + "/unknown/" + savee_dir[i]
+            os.system(f"cp {file_path} {audio_path}")
+
+
 
 
 if __name__ == "__main__":
@@ -196,8 +235,14 @@ if __name__ == "__main__":
     print("All EMODB data is completed formatted and stored in there respective Folders")
 
     ravedess_path = "/Users/ishananand/Desktop/ser/dataset/ravdess_dataset/"
-    combineRAVEDESS(ravedess_path, combined_audio_path)
+    # combineRAVEDESS(ravedess_path, combined_audio_path)
     print("All RAVEDESS data is completed formatted and stored in there respective Folders")
+
+
+    savee_path = "/Users/ishananand/Desktop/ser/dataset/savee_dataset/"
+    combineSAVEE(savee_path, combined_audio_path)
+    print("All SAVEE data is completed formatted and stored in there respective Folders")
+
 
 
 
