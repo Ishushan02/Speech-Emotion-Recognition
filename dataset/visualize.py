@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 import numpy as np
+import librosa
+
 import pandas as pd
 
 def plotCountPlot(dataset_path, save_dir, filename):
@@ -45,5 +47,30 @@ def plotCountPlot(dataset_path, save_dir, filename):
     plt.show()
 
 
+
+def wavePlot(datapath, WaveformName, save_dir, filename):
+# Load an audio file
+    y, sr = librosa.load(datapath, sr=None)
+
+    # Plot the waveform
+    plt.figure(figsize=(10, 4))
+    plt.plot(y)
+    plt.title(WaveformName)
+    plt.xlabel('Time (samples)')
+    plt.ylabel('Amplitude')
+    plt.savefig(save_dir + filename)
+    plt.show()
+
+
+
 if __name__=="__main__":
-    plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
+    
+    # plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/angry/03-01-05-01-01-01-01.wav", "Anger WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "angerWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/bored/03a04Lc.wav", "Bored WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "boredWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/disgust/03-01-07-01-01-01-01.wav", "Disgust WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "disgustWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/fear/03-01-06-01-01-01-01.wav", "Fear WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "fearWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/happy/03-01-03-01-01-01-01.wav", "Happy WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "happyWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/neutral/03-01-01-01-01-01-01.wav", "Neutral WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "neutralWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/sad/03-01-04-01-01-01-01.wav", "Sad WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "sadWaveform.png")
+    wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/surprise/03-01-08-01-01-01-01.wav", "Surprise WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "surpriseWaveform.png")
