@@ -32,6 +32,24 @@ EMODB
 
 
 RAVDESS
+
+    This portion of the RAVDESS contains 1440 files: 60 trials per actor x 24 actors = 1440. 
+    The RAVDESS contains 24 professional actors (12 female, 12 male), vocalizing two lexically-matched
+    statements in a neutral North American accent. Speech emotions includes calm, happy, sad,
+    angry, fearful, surprise, and disgust expressions. Each expression is produced at two levels
+    of emotional intensity (normal, strong), with an additional neutral expression.
+
+    Filename identifiers
+    Modality (01 = full-AV, 02 = video-only, 03 = audio-only).
+    Vocal channel (01 = speech, 02 = song).
+    Emotion (01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised).
+    Emotional intensity (01 = normal, 02 = strong). Note: There is no strong intensity for the 'neutral' emotion.
+    Statement (01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door").
+    Repetition (01 = 1st repetition, 02 = 2nd repetition).
+    Actor (01 to 24. Odd numbered actors are male, even numbered actors are female).
+
+
+
 SAVEE
 TESS
 
@@ -45,7 +63,7 @@ combined_audio_path = "/Users/ishananand/Desktop/ser/combined_dataset/"
 
 def combineCREMAD(cremad_path, combined_audio_path):
     cremad_dir = os.listdir(cremad_path)
-    # print("Total Length of CREMAD Audio's: ", len(cremad_dir))
+    print("Total Length of CREMAD Audio's: ", len(cremad_dir))
 
     for i in range(len(cremad_dir)):
         file_path = cremad_path + cremad_dir[i]
@@ -77,10 +95,11 @@ def combineCREMAD(cremad_path, combined_audio_path):
             audio_path = combined_audio_path + "/unknown/" + cremad_dir[i]
             os.system(f"cp {file_path} {audio_path}")
 
-
+# extra bored
 def combineEMODB(emodbpath, combined_audio_path):
     emodbdir = os.listdir(emodbpath)
 
+    print("Total Length of EMODB Audio's: ", len(emodbdir))
     for i in range(len(emodbdir)):
         file_path = emodbpath + emodbdir[i]
         # print(file_path)
@@ -115,6 +134,55 @@ def combineEMODB(emodbpath, combined_audio_path):
             os.system(f"cp {file_path} {audio_path}")
 
 
+# extra calm, surprised
+def combineRAVEDESS(ravedesspath, combined_audio_path):
+
+    ravedessactordir = os.listdir(ravedesspath)
+
+    totalaudios = 0
+    for each_actor in ravedessactordir:
+        audios = os.listdir(ravedesspath + each_actor)
+        totalaudios += len(audios)
+        for i in range(len(audios)):
+            
+
+            file_name = audios[i].split('.')[0].split('-')
+            file_path = ravedesspath + each_actor + "/"  + audios[i]
+
+            if file_name[2] == '04':
+                audio_path = combined_audio_path + "/sad/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '05':
+                audio_path = combined_audio_path + "/angry/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            # elif file_name[2] == 'L':
+            #     audio_path = combined_audio_path + "/bored/" + audios[i]
+            #     os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '07':
+                audio_path = combined_audio_path + "/disgust/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '06':
+                audio_path = combined_audio_path + "/fear/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '03':
+                audio_path = combined_audio_path + "/happy/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '01':
+                audio_path = combined_audio_path + "/neutral/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '02':
+                audio_path = combined_audio_path + "/calm/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            elif file_name[2] == '08':
+                audio_path = combined_audio_path + "/surprise/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+            else:
+                audio_path = combined_audio_path + "/unknown/" + audios[i]
+                os.system(f"cp {file_path} {audio_path}")
+
+    print("Total Length of RAVEDESS Audio's: ", totalaudios)
+
+
 
 
 if __name__ == "__main__":
@@ -124,6 +192,12 @@ if __name__ == "__main__":
     print("All CREMAD data is completed formatted and stored in there respective Folders")
 
     emodb_path = "/Users/ishananand/Desktop/ser/dataset/emodb_dataset/"
-    combineEMODB(emodb_path, combined_audio_path)
+    # combineEMODB(emodb_path, combined_audio_path)
     print("All EMODB data is completed formatted and stored in there respective Folders")
+
+    ravedess_path = "/Users/ishananand/Desktop/ser/dataset/ravdess_dataset/"
+    combineRAVEDESS(ravedess_path, combined_audio_path)
+    print("All RAVEDESS data is completed formatted and stored in there respective Folders")
+
+
 
