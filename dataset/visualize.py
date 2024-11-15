@@ -64,7 +64,7 @@ def wavePlot(datapath, WaveformName, save_dir, filename):
 
 def spectogramPlot(datapath, WaveformName, save_dir, filename):
 
-# Compute the spectrogram
+    # Compute the spectrogram
     y, sr = librosa.load(datapath, sr=None)
     D = librosa.amplitude_to_db(np.abs(librosa.stft(y)), ref=np.max)
 
@@ -79,7 +79,8 @@ def spectogramPlot(datapath, WaveformName, save_dir, filename):
 
 if __name__=="__main__":
     
-    # plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
+    plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
+    
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/angry/03-01-05-01-01-01-01.wav", "Anger WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "angerWaveform.png")
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/bored/03a04Lc.wav", "Bored WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "boredWaveform.png")
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/disgust/03-01-07-01-01-01-01.wav", "Disgust WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "disgustWaveform.png")
@@ -89,11 +90,11 @@ if __name__=="__main__":
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/sad/03-01-04-01-01-01-01.wav", "Sad WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "sadWaveform.png")
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/surprise/03-01-08-01-01-01-01.wav", "Surprise WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "surpriseWaveform.png")
 
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/angry/03-01-05-01-01-01-01.wav", "Anger Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "angerSpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/bored/03a04Lc.wav", "Bored Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "boredSpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/disgust/03-01-07-01-01-01-01.wav", "Disgust Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "disgustSpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/fear/03-01-06-01-01-01-01.wav", "Fear Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "fearSpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/happy/03-01-03-01-01-01-01.wav", "Happy Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "happySpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/neutral/03-01-01-01-01-01-01.wav", "Neutral Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "neutralSpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/sad/03-01-04-01-01-01-01.wav", "Sad Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "sadSpectogram.png")
-    spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/surprise/03-01-08-01-01-01-01.wav", "Surprise Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "surpriseSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/angry/03-01-05-01-01-01-01.wav", "Anger Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "angerSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/bored/03a04Lc.wav", "Bored Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "boredSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/disgust/03-01-07-01-01-01-01.wav", "Disgust Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "disgustSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/fear/03-01-06-01-01-01-01.wav", "Fear Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "fearSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/happy/03-01-03-01-01-01-01.wav", "Happy Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "happySpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/neutral/03-01-01-01-01-01-01.wav", "Neutral Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "neutralSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/sad/03-01-04-01-01-01-01.wav", "Sad Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "sadSpectogram.png")
+    # spectogramPlot("/Users/ishananand/Desktop/ser/combined_dataset/surprise/03-01-08-01-01-01-01.wav", "Surprise Spectogram", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/spectogram/", "surpriseSpectogram.png")
