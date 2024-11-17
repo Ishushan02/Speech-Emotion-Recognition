@@ -3,6 +3,7 @@ import IPython.display as ipd
 import librosa
 import soundfile as sf
 import noisereduce as nr
+import os
 
 
 '''
@@ -14,6 +15,8 @@ which means that the anger voices would be highly pitched whereas the sad voices
 meddling with the pitches, shiftness and stretching property of Audio's might alter the audio characterstic
 entirely. So, for that case I am using only Noise addition to the dataset which will increase our dataset
 size and also noise addition seems to be realistic as the normal audio's will be with noise.
+
+The Longest Audio Length in our dataset is of 7 Seconds.
 
 '''
 
@@ -41,11 +44,27 @@ def add_noise_to_audio(input_path, output_path):
 
 if __name__=="__main__":
 
-    audio_file_path = "/Users/ishananand/Desktop/ser/combined_dataset/angry/1007_IWW_ANG_XX.wav"
-    output = "/Users/ishananand/Desktop/ser/combined_dataset/angry/1007_IWW_ANG_XX_noised.wav"
+    # audio_file_path = "/Users/ishananand/Desktop/ser/combined_dataset/angry/1007_IWW_ANG_XX.wav"
+    # output = "/Users/ishananand/Desktop/ser/combined_dataset/angry/1007_IWW_ANG_XX_noised.wav"
 
-    add_noise_to_audio(audio_file_path, output)
+    # add_noise_to_audio(audio_file_path, output)
 
-    
-    # noised_data = noise(audio_file)
-    print("ASBCSDLJK")
+    # Doing the above procedure for all of the Dataset
+
+    root_path = "/Users/ishananand/Desktop/ser/combined_dataset"
+    allaudios = os.listdir(root_path)
+
+    for i in range(len(allaudios)):
+        audio_path = root_path + "/" + allaudios[i]
+        each_audio_path = os.listdir(audio_path)
+        max_audio = 0
+        for j in range(len(each_audio_path)):
+            current_audio_path = audio_path + "/" + each_audio_path[j]
+            noised_audio_path = audio_path + "/noised_" + each_audio_path[j]
+            # add_noise_to_audio(current_audio_path, noised_audio_path)
+            # data, sr = librosa.load(current_audio_path)
+            # max_audio = max(max_audio, len(data/sr))
+            # print("Name of data: ", current_audio_path, "Shape of data: ", data.shape, " and Duration Of Audio: ", len(data/sr))
+        print(f"All Audio's of {allaudios[i]} is been Augmented")
+    # print(max_audio)
+    print("All Audios are Augmented by adding noise to them")
