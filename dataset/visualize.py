@@ -79,7 +79,9 @@ def spectogramPlot(datapath, WaveformName, save_dir, filename):
 
 if __name__=="__main__":
     
-    plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
+    # plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "initial_countplot.png")
+    plotCountPlot("/Users/ishananand/Desktop/ser/combined_dataset", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/", "augmentation_countplot.png")
+
     
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/angry/03-01-05-01-01-01-01.wav", "Anger WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "angerWaveform.png")
     # wavePlot("/Users/ishananand/Desktop/ser/combined_dataset/bored/03a04Lc.wav", "Bored WaveForm", "/Users/ishananand/Desktop/ser/Speech-Emotion-Recognition/images/waveform/", "boredWaveform.png")
