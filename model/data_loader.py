@@ -155,7 +155,7 @@ def getDatapoints(csv_path = "/Users/ishananand/Desktop/ser/Speech-Emotion-Recog
     testSize = len(dataset) - trainingSize 
     train_dataset, test_dataset = random_split(dataset, [trainingSize, testSize])
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
 
     print(f"Train Data Size: {len(train_dataset)} and Test Data Size: {len(test_dataset)}")
     
