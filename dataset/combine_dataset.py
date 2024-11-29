@@ -305,25 +305,27 @@ def combineTESS(tess_path, combined_audio_path):
 if __name__ == "__main__":
 
     cremad_path = "/Users/ishananand/Desktop/ser/dataset/cremad_dataset/"
-    # combineCREMAD(cremad_path, combined_audio_path)
+    combineCREMAD(cremad_path, combined_audio_path)
     print("All CREMAD data is completed formatted and stored in there respective Folders")
 
     emodb_path = "/Users/ishananand/Desktop/ser/dataset/emodb_dataset/"
-    # combineEMODB(emodb_path, combined_audio_path)
+    combineEMODB(emodb_path, combined_audio_path)
     print("All EMODB data is completed formatted and stored in there respective Folders")
 
     ravedess_path = "/Users/ishananand/Desktop/ser/dataset/ravdess_dataset/"
-    # combineRAVEDESS(ravedess_path, combined_audio_path)
+    combineRAVEDESS(ravedess_path, combined_audio_path)
     print("All RAVEDESS data is completed formatted and stored in there respective Folders")
 
 
     savee_path = "/Users/ishananand/Desktop/ser/dataset/savee_dataset/"
-    # combineSAVEE(savee_path, combined_audio_path)
+    combineSAVEE(savee_path, combined_audio_path)
     print("All SAVEE data is completed formatted and stored in there respective Folders")
 
     tess_path = "/Users/ishananand/Desktop/ser/dataset/tess_dataset/"
-    # combineTESS(tess_path, combined_audio_path)
+    combineTESS(tess_path, combined_audio_path)
     print("All TESS data is completed formatted and stored in there respective Folders")
+
+    
 
     
 
