@@ -141,6 +141,7 @@ def train(trainDataLoader, epochs, modelPath):
         lossFn = nn.CrossEntropyLoss()
 
     for each_epoch in range(epochs):
+            model.train(True)
             epoch_loss = 0
             correct_predictions = 0 
             total_samples = 0
@@ -154,7 +155,7 @@ def train(trainDataLoader, epochs, modelPath):
                 trainX = trainX.to(device)
                 trainY = trainY.long()
                 trainY = trainY.to(device)
-                print(trainX.shape)
+                # print(trainX.shape)
                 # Forward pass
                 pred = model(trainX)
                 
